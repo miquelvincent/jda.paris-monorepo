@@ -10,6 +10,7 @@
     "scripts": {
         "client": "yarn workspace @jda.paris/client start",
         "server": "yarn workspace @jda.paris/server start",
-        "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
+        "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+        "build": "yarn workspace @jda.paris/server build"
     }
 }

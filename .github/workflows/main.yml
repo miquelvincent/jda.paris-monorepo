@@ -12,6 +12,4 @@ jobs:
           heroku_email: "vin.miquel@gmail.com"
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "jda-api"
-          useforce: true,
-          dynamicFiles: true,
           appdir: "packages/server"

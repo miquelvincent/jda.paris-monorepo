@@ -4,6 +4,7 @@
     "name": "Hero",
     "icon": "address-card"
   },
+  
   "options": {},
   "attributes": {
     "title": {

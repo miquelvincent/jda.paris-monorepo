@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
-import ArticlesComponent from "../components/articles";
+import ProjectsComponent from "../components/projects";
 import "../assets/css/main.css";
 
 const IndexPage = () => {
@@ -12,7 +12,7 @@ const IndexPage = () => {
       <div className="uk-section">
         <div className="uk-container uk-container-large">
           <h1>{data.strapiHomepage.hero.title}</h1>
-          <ArticlesComponent articles={data.allStrapiArticle.edges} />
+          <ProjectsComponent projects={data.allStrapiArticle.edges} />
         </div>
       </div>
     </Layout>

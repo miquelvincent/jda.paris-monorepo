@@ -35,7 +35,7 @@ export const query = graphql`
   }
 `;
 
-const Article = ({ data }) => {
+const Project = ({ data }) => {
   const article = data.strapiArticle;
   const seo = {
     metaTitle: article.title,
@@ -88,4 +88,4 @@ const Article = ({ data }) => {
   );
 };
 
-export default Article;
+export default Project;

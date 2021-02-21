@@ -27,12 +27,12 @@ exports.createPages = async ({ graphql, actions }) => {
       throw result.errors;
     }
   
-    // Create blog articles pages.
-    const articles = result.data.articles.edges;
-    const ArticleTemplate = require.resolve("./src/templates/article.tsx");
-    articles.forEach((article, index) => {
+    // Create projects pages.
+    const projects = result.data.articles.edges;
+    const ArticleTemplate = require.resolve("./src/templates/project.tsx");
+    projects.forEach((article, index) => {
       createPage({
-        path: `/article/${article.node.slug}`,
+        path: `/project/${article.node.slug}`,
         component: ArticleTemplate,
         context: {
           slug: article.node.slug,

@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "about",
+  "info": {
+    "name": "Agence",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Membre": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.membre"
+    },
+    "Description": {
+      "type": "richtext"
+    }
+  }
+}

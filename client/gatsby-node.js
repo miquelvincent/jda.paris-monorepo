@@ -40,18 +40,6 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
   
-    // Create blog catehories pages.
-    const categories = result.data.categories.edges;
-    const CategoryTemplate = require.resolve("./src/templates/category.tsx");
-    categories.forEach((category, index) => {
-      createPage({
-        path: `/category/${category.node.slug}`,
-        component: CategoryTemplate,
-        context: {
-          slug: category.node.slug,
-        },
-      });
-    });
   };
   
   module.exports.onCreateNode = async ({ node, actions, createNodeId }) => {

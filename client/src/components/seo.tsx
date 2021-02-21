@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = ({ seo = {} }) => {
+const SEO = ({ seo = {} }:{seo:any}): any => {
   const { strapiGlobal } = useStaticQuery(query);
   const { defaultSeo, siteName, favicon } = strapiGlobal;
 
@@ -81,29 +80,7 @@ const SEO = ({ seo = {} }) => {
         {
           rel: "icon",
           href: favicon.publicURL,
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Staatliches",
-        },
-        {
-          rel: "stylesheet",
-          href:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
-        },
-      ]}
-      script={[
-        {
-          src:
-            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
-        },
-        {
-          src:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
-        },
-        {
-          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
-        },
+        }
       ]}
       meta={metaTags}
     />
@@ -112,19 +89,6 @@ const SEO = ({ seo = {} }) => {
 
 export default SEO;
 
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  article: PropTypes.bool,
-};
-
-SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
-};
 
 const query = graphql`
   query {

@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
     // Create blog articles pages.
     const articles = result.data.articles.edges;
-    const ArticleTemplate = require.resolve("./src/templates/article.js");
+    const ArticleTemplate = require.resolve("./src/templates/article.tsx");
     articles.forEach((article, index) => {
       createPage({
         path: `/article/${article.node.slug}`,
@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
     // Create blog catehories pages.
     const categories = result.data.categories.edges;
-    const CategoryTemplate = require.resolve("./src/templates/category.js");
+    const CategoryTemplate = require.resolve("./src/templates/category.tsx");
     categories.forEach((category, index) => {
       createPage({
         path: `/category/${category.node.slug}`,

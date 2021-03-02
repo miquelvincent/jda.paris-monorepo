@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "project",
+  "collectionName": "projects",
   "info": {
     "name": "Réalisation",
     "description": ""
@@ -17,7 +17,7 @@
     "Description": {
       "type": "richtext"
     },
-    "Header": {
+    "Thumbmail": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -39,7 +39,7 @@
       "plugin": "upload",
       "required": false
     },
-    "slug": {
+    "Slug": {
       "type": "uid",
       "targetField": "Title"
     }

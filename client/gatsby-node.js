@@ -11,14 +11,6 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
           }
-          categories: allStrapiCategory {
-            edges {
-              node {
-                strapiId
-                slug
-              }
-            }
-          }
         }
       `
     );

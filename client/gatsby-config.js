@@ -6,6 +6,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
+    "gatsby-plugin-transition-link",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -17,8 +18,11 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
-        contentTypes: ["realisations", "article", "category", "writer"],
-        singleTypes: [`homepage`, `global`],
+        contentTypes: [ `article`, `projects`, {
+          name: `press`,
+          endpoint: `press`,
+        },],
+        singleTypes: [`homepage`, `global`, `about`],
         queryLimit: 1000,
       },
     },
@@ -36,6 +40,16 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`
       },
     },
-    "gatsby-plugin-offline",
+    {
+      resolve:`gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+        type: `type Value`,
+        prefix: `abc-xyz/`
+      },
+      "gatsby-plugin-offline",
   ],
 };

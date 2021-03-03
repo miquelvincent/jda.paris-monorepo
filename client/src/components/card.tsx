@@ -1,16 +1,14 @@
 import React from "react";
-import { Link } from "gatsby";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image";
 
+//** Check this  link to use images from cloudinary : https://www.npmjs.com/package/gatsby-source-cloudinary */
 const Card = ({ project }) => {
   return (
-    <Link to={`/project/${project.node.slug}`}>
+    <AniLink paintDrip to={`/project/${project.node.slug}`}>
       <div>
         <div>
-          <Img
-            fixed={project.node.image.childImageSharp.fixed}
-            imgStyle={{ position: "static" }}
-          />
+        <Img fixed={{width: 400, height: 200, src: `${project.node.image.localFile.publicURL}`, srcSet:`${project.node.image.localFile.publicURL}`}}/>
         </div>
         <div> 
           <p>
@@ -18,7 +16,7 @@ const Card = ({ project }) => {
           </p>    
         </div>
       </div>
-    </Link>
+    </AniLink>
   );
 };
 

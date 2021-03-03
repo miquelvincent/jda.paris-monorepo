@@ -8,60 +8,34 @@ const IndexPage = () => {
   const data = useStaticQuery(query);
 
   return (
-    <Layout seo={data.strapiHomepage.seo}>
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>{data.strapiHomepage.hero.title}</h1>
-          <ProjectsComponent projects={data.allStrapiArticle.edges} />
-        </div>
-      </div>
+    <Layout>
+        <ProjectsComponent projects={data.allStrapiArticle.edges} />   
     </Layout>
   );
 };
 
 const query = graphql`
   query {
-    strapiHomepage {
-      hero {
-        title
-      }
-      seo {
-        metaTitle
-        metaDescription
-        shareImage {
-          publicURL
-        }
-      }
-    }
     allStrapiArticle(filter: { status: { eq: "published" } }) {
       edges {
         node {
           strapiId
           slug
           title
-          category {
-            name
-          }
           image {
-            childImageSharp {
-              fixed(width: 800, height: 500) {
-                src
+            childCloudinaryAsset {
+              fixed {
+                ...CloudinaryAssetFixed
               }
             }
-          }
-          author {
-            name
-            picture {
-              childImageSharp {
-                fixed(width: 30, height: 30) {
-                  src
-                }
-              }
+            localFile{
+              publicURL
             }
           }
         }
       }
     }
+   
   }
 `;
 

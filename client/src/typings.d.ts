@@ -8,9 +8,7 @@ interface Article {
           fluid: FluidObject
         }
       }
-      category: {
-        name: string
-      }
+
       title: string
       content: string
     }

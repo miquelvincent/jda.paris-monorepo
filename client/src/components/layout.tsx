@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StaticQuery, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Seo from "./seo";
+import Header from "./header"
+
+
 
 const Layout = ({ children }) => {
-
   const data = useStaticQuery(query);
   return ( 
       <>
         <Seo seo={data.strapiHomepage.seo} />
+        <Header />
         <main>{children}</main>
       </>
 )};

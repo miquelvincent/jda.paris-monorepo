@@ -9,33 +9,26 @@ const IndexPage = () => {
 
   return (
     <Layout>
-        <ProjectsComponent projects={data.allStrapiArticle.edges} />   
+        <ProjectsComponent projects={data.allStrapiProjects.edges} />   
     </Layout>
   );
 };
 
 const query = graphql`
   query {
-    allStrapiArticle(filter: { status: { eq: "published" } }) {
+    allStrapiProjects(filter: {}) {
       edges {
         node {
           strapiId
-          slug
-          title
-          image {
-            childCloudinaryAsset {
-              fixed {
-                ...CloudinaryAssetFixed
-              }
-            }
-            localFile{
-              publicURL
-            }
+          Slug
+          Title
+          Thumbmail {
+            id
+            url
           }
         }
       }
     }
-   
   }
 `;
 

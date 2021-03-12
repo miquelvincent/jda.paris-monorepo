@@ -3,11 +3,11 @@ exports.createPages = async ({ graphql, actions }) => {
     const result = await graphql(
       `
         {
-          articles: allStrapiArticle {
+          projects: allStrapiProjects {
             edges {
               node {
-                strapiId
-                slug
+                id
+                Slug
               }
             }
           }
@@ -20,14 +20,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   
     // Create projects pages.
-    const projects = result.data.articles.edges;
-    const ArticleTemplate = require.resolve("./src/templates/project.tsx");
-    projects.forEach((article, index) => {
+    const projects = result.data.projects.edges;
+    const ProjectTemplate = require.resolve("./src/templates/project.tsx");
+    projects.forEach((project, index) => {
       createPage({
-        path: `/project/${article.node.slug}`,
-        component: ArticleTemplate,
+        path: `/project/${project.node.Slug}`,
+        component: ProjectTemplate,
         context: {
-          slug: article.node.slug,
+          slug: project.node.Slug,
         },
       });
     });
@@ -37,14 +37,14 @@ exports.createPages = async ({ graphql, actions }) => {
   module.exports.onCreateNode = async ({ node, actions, createNodeId }) => {
     const crypto = require(`crypto`);
   
-    if (node.internal.type === "StrapiArticle") {
+    if (node.internal.type === "StrapiProjects") {
       const newNode = {
-        id: createNodeId(`StrapiArticleContent-${node.id}`),
+        id: createNodeId(`StrapiProjectContent-${node.id}`),
         parent: node.id,
         children: [],
         internal: {
           content: node.content || " ",
-          type: "StrapiArticleContent",
+          type: "StrapiProjectContent",
           mediaType: "text/markdown",
           contentDigest: crypto
             .createHash("md5")

@@ -9,7 +9,7 @@ const AgencyPage = () => {
 
   return (
     <Layout>
-      <div className="uk-section">
+      <div>
           <h1>{data.strapiAbout.Description}</h1>
          {data.strapiAbout.Membre.map((item, i) => <Img key={i} fixed={{width: 400, height: 200, src:`${item.Image.url}`, srcSet:`${item.Image.url}`}} />)}
       </div>

@@ -6,7 +6,10 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
-    "gatsby-plugin-transition-link",
+    'gatsby-plugin-page-transitions',
+    {
+      resolve: "gatsby-plugin-transition-link",
+   },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -43,13 +46,12 @@ module.exports = {
     {
       resolve:`gatsby-source-cloudinary`,
       options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: `image`,
-        type: `type Value`,
-        prefix: `abc-xyz/`
+        cloudName: process.env.CLOUDINARY_NAME,
+        apiKey: process.env.CLOUDINARY_KEY,
+        apiSecret: process.env.CLOUDINARY_SECRET,
+        resourceType: `image`
       },
-      "gatsby-plugin-offline",
+    },
+    "gatsby-plugin-offline",
   ],
 };

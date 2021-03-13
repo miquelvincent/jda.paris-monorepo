@@ -7,6 +7,9 @@ import React from "react"
 const StyledFooter = styled.footer`
     margin: 50px 20px;
     border-top: 2px solid black;
+    @media (max-width: 1024px) {
+      margin: 30px 20px 20px;
+    }
     >div {
       display: flex;
       padding: 0px 0px 10px; 
@@ -43,6 +46,18 @@ const StyledFooter = styled.footer`
         transition: 0.5s ease;
       }
     }
+    @media (max-width: 1024px) {
+      height: 50px;
+      justify-content: center;
+      padding: 0px 0px 0px;
+      margin: 20px 20px;
+      .projects {
+        display: none; 
+      }
+      .logo {
+        display: none; 
+      }
+    }
   }
 `
 const Footer = () => {
@@ -54,7 +69,7 @@ const Footer = () => {
           <div className="title">Réalisations</div>
           {data.allStrapiProjects.edges.map(item => <span className="link"><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link><span className="separator"> | </span></span>)}
         </div>
-        <AniLink fade to={`/`}><Logo /></AniLink>
+        <div className="logo"><AniLink fade to={`/`}><Logo /></AniLink></div>
         <div className="contact"><a href="mailto:contact@jda.paris">contact@jda.paris</a> | <a href="tel:0033665500559">+33 6 65 50 05 59</a> | <a href="https://www.instagram.com/jdarchitecte/" target="_blank" rel="noreferrer">Instagram</a></div>
       </div>
     </StyledFooter>

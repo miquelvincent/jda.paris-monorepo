@@ -9,6 +9,9 @@ transition: all 0.5s ease-out;
   background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
+  @media (max-width: 1024px) {
+    height: 50vh;
+    }
   div {
     box-sizing: border-box;
     transition: opacity 0.5s;
@@ -16,7 +19,7 @@ transition: all 0.5s ease-out;
     height: 100%;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(to bottom, transparent, rgb(251, 196, 65));
+    background: linear-gradient(to bottom, transparent 80%, rgb(251, 196, 65));
     display: flex;
     align-items: flex-end;
     color: black;
@@ -24,6 +27,9 @@ transition: all 0.5s ease-out;
     font-weight: 700;
     font-size: 20px;
     justify-content: flex-start;
+    @media (max-width: 1024px) {
+      opacity: 1;
+    }
     &:hover {
       opacity: 1;
     }

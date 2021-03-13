@@ -3,10 +3,12 @@ import { useState, useEffect } from "react"
 function useWindowSize() {
   const isClient = typeof window === "object"
 
-  function getSize(): { width: number; height: number} {
+  function getSize(): { width: number; height: number, scrollHeight: number} {
     const width = isClient ? window.innerWidth : undefined
-    const height = isClient ? window.innerHeight : undefined
+    const height = isClient ? window.outerHeight : undefined
+    const scrollHeight =   isClient  ? document.documentElement.scrollHeight : undefined
     return {
+      scrollHeight,
       width,
       height
     }

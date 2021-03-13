@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from "react";
 import styled from "styled-components"
 import { graphql } from "gatsby";
-import {handleOpacity} from "../helpers"
+import { handleOpacity } from "../helpers"
 import { useScroll } from "../hooks/useScroll"
 import { useDimensions } from "react-hook-dimensions"
 import Nav from "../components/nav"
@@ -17,6 +17,9 @@ const StyledCover = styled.div<{ imageCover: string }>`
   background-position: center;
   height: 70vh;
   width: 100%;
+  @media (max-width: 1024px) {
+    height: 50vh;
+  }
   >div {
     height: 100%;
     width: 100%;
@@ -36,13 +39,20 @@ const StyledCover = styled.div<{ imageCover: string }>`
 `
 
 const StyledGallery = styled.div`
+  @media (max-width: 1024px) {
+    margin: 0 20px;
+  }
+>div {
   width: 100%;
-  max-width: 900px;
+  max-width: 980px;
   margin: auto;
+
   img {
     margin-bottom: 20px;
     width: 100%;
   }
+}
+
 `
 
 export const query = graphql`
@@ -84,13 +94,13 @@ const Project = ({ data }) => {
     const positionFooter = footer?.current?.offsetTop - (scrollPositon.scrollYBottom + 300)
     const deltaPositionNav = scrollPositon.scrollY - (cover?.current?.offsetTop + cover?.current?.offsetHeight)
     const position = scrollPositon.scrollY < 1500 ? deltaPositionNav : positionFooter
-    const opacity = handleOpacity(position)
+    let opacity = handleOpacity(position)
     updateDisplay(opacity)
   }, [scrollPositon])
 
   return (
     <div style={{opacity, transition: "opacity 1s ease-in"}}>
-      <Nav opacity={displayNav} />
+      <Nav opacity={displayNav} footerPosition={footer?.current?.offsetTop} />
         <StyledCover imageCover={project.Thumbmail.url} ref={cover}>
           <div>
             <div>
@@ -100,9 +110,11 @@ const Project = ({ data }) => {
           </div>
         </StyledCover>
         <StyledGallery>
+          <div>
           {project.Images.map(image =>
             <img key={image.id} src={image.url} />
           )}
+          </div>
         </StyledGallery>
         <div ref={footer}><Footer /></div>
     </div>

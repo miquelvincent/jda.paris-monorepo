@@ -11,6 +11,19 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   background: antiquewhite;
+  @media (max-width: 1024px) {
+    position: absolute;
+    background: transparent;
+    padding: 0 0 0 0; 
+    width: 100%;
+    z-index: 100;
+    justify-content: center;
+    margin: 20px auto;
+    a {
+      display: none;
+
+    }
+  }
   svg {
     height: 110px;
   }
@@ -24,7 +37,7 @@ const StyledHeader = styled.header`
 `
 const Header = () => (
   <StyledHeader>
-    <AniLink fade to={`/`}>Réalisations</AniLink>
+    <Link to={`/`}>Réalisations</Link>
     <div><Logo/></div>
     <Link to="/agency">Agence</Link>
   </StyledHeader>

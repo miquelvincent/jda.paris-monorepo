@@ -59,13 +59,7 @@ table {
     font-family: 'Roboto', sans-serif;
     top: 0;
   }
-  .grid{
-    display: grid;
-    max-width: 980px;
-    margin: auto;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-  }
+  
   .slideshow {
     height: calc(100vh - 100px);
     width: 100%;

@@ -22,7 +22,6 @@ const IndexPage = () => {
     const deltaPositionNav = scrollPositon.scrollY - (cover?.current?.offsetTop + cover?.current?.offsetHeight)
     const position = scrollPositon.scrollY < 1500 ? deltaPositionNav : positionFooter
     const opacity = handleOpacity(position)
-    console.log(positionFooter, deltaPositionNav)
     updateDisplay(opacity)
   }, [scrollPositon])
 
@@ -32,7 +31,7 @@ const IndexPage = () => {
         <div ref={cover} className="cover"><Slideshow images={data.strapiHomepage.slideshow} /></div>
         <Nav opacity={displayNav} />
         <ProjectsComponent projects={data.allStrapiProjects.edges} />
-        <div ref={footer}><Footer/></div>
+        <div ref={footer} footerPosition={footer?.current?.offsetTop}><Footer/></div>
     </Layout>
   );
 };

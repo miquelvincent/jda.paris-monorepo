@@ -6,7 +6,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
-    'gatsby-plugin-page-transitions',
     {
       resolve: "gatsby-plugin-transition-link",
    },

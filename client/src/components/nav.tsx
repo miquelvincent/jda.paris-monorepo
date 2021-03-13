@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Logo } from "../assets/logo"
+import { useWindowSize } from "../hooks/useWindowSize"
 import styled from "styled-components"
 import { Arrow } from "../assets/arrow"
 import { Link, graphql, useStaticQuery } from "gatsby";
@@ -71,12 +72,15 @@ const StyledNav = styled.div`
   }
 `
 
-const Nav = ({ opacity }: { opacity: number }) => {
+const Nav = ({ opacity, footerPosition }: { opacity: number, footerPosition: number }) => {
   const data = useStaticQuery(query);
+  const windowSize = useWindowSize()
   const [openProjectsMenu, updateMenu] = useState(false)
+
   return (
+    footerPosition > 3000 ?
     <StyledNav>
-      <nav style={{ opacity, display: opacity > 0 ? 'block' : 'none' }}>
+      <nav style={{ opacity: opacity, display: opacity > 0 ? 'block' : 'none' }}>
         <ul>
           <li className="logo">
             <Link to="/"><Logo /></Link>
@@ -102,7 +106,7 @@ const Nav = ({ opacity }: { opacity: number }) => {
         </ul>
       </nav>
       <div style={{ opacity, display: opacity > 0 ? 'block' : 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="backToTop"><Arrow /></div>
-    </StyledNav>
+    </StyledNav> : <span/>
   );
 };
 

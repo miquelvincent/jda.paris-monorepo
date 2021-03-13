@@ -9,9 +9,17 @@ import Nav from "./nav"
 
 const StyledLayout = styled.div`
   transition: opacity 1s ease-in;
-  .grid{
-    margin-top: 30px
-  }
+  .grid {
+    display: grid;
+    max-width: 980px;
+    grid-gap: 25px;
+    margin: 30px auto;
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      margin: 30px 20px 0;
+    }
+}
 `
 
 const Layout = ({ children }) => {

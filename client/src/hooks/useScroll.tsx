@@ -2,6 +2,9 @@ import { useState, useEffect } from "react"
 import {useWindowSize} from "./useWindowSize"
 
 function useScroll() {
+  if (typeof window === 'undefined' || !window.document) {
+    return {}
+  }
   const [lastScrollTop, setLastScrollTop] = useState(0)
   const windowHeight = useWindowSize().height
   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect())
@@ -9,7 +12,6 @@ function useScroll() {
   const [scrollX, setScrollX] = useState(bodyOffset.left)
   const [scrollYBottom, setScrollYBottom] = useState(windowHeight)
   const [scrollDirection, setScrollDirection] = useState()
-
 
   const listener = e => {
     setBodyOffset(document.body.getBoundingClientRect())

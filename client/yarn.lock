@@ -2075,6 +2075,11 @@
   resolved "https://registry.yarnpkg.com/@turist/time/-/time-0.0.1.tgz#57637d2a7d1860adb9f9cecbdcc966ce4f551d63"
   integrity sha512-M2BiThcbxMxSKX8W4z5u9jKZn6datnM3+FpEU+eYw0//l31E2xhqi7vTAuJ/Sf0P3yhp66SDJgPu3bRRpvrdQQ==
 
+"@tweenjs/tween.js@^18.1.2":
+  version "18.6.4"
+  resolved "https://registry.yarnpkg.com/@tweenjs/tween.js/-/tween.js-18.6.4.tgz#40a3d0a93647124872dec8e0fd1bd5926695b6ca"
+  integrity sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==
+
 "@types/cacheable-request@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@types/cacheable-request/-/cacheable-request-6.0.1.tgz#5d22f3dded1fd3a84c0bbeb5039a7419c2c91976"
@@ -11696,6 +11701,11 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-hook-dimensions@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-hook-dimensions/-/react-hook-dimensions-1.3.1.tgz#41f1e05e86eddb4b800bb9a6db7e3d596ecce4e5"
+  integrity sha512-rcYpepK+ChCMUDdHVLQ5VltrSFYBVQJQyh+gsTDvpZP4LTnDqp4NBZqbrnj1XNl2cPKeB3KvbMcmRU4t3stpng==
+
 react-hot-loader@^4.12.21:
   version "4.13.0"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.13.0.tgz#c27e9408581c2a678f5316e69c061b226dc6a202"
@@ -11750,6 +11760,14 @@ react-side-effect@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
+
+react-slideshow-image@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-slideshow-image/-/react-slideshow-image-3.4.3.tgz#ac37546bf145dced3798531ac5c4b72529a93b7a"
+  integrity sha512-eiL5BRuMpOIxMXZx5QU4huLF+oPXC8TNXPmZGLTWawQbiX33dvKKhozAR5Ht4woI/tOdi9pe6XVSnYCjywFhsQ==
+  dependencies:
+    "@tweenjs/tween.js" "^18.1.2"
+    resize-observer-polyfill "^1.5.1"
 
 react-transition-group@^2.4.0, react-transition-group@^2.5.0:
   version "2.9.0"
@@ -12130,6 +12148,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

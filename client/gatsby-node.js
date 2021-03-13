@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const ProjectTemplate = require.resolve("./src/templates/project.tsx");
     projects.forEach((project, index) => {
       createPage({
-        path: `/project/${project.node.Slug}`,
+        path: `/${project.node.Slug}`,
         component: ProjectTemplate,
         context: {
           slug: project.node.Slug,

@@ -1,14 +1,14 @@
 import React from "react";
+import { Link } from "gatsby";
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-const yellow = "rgb(251, 196, 65)"
 
-const StyledCard = styled.div`
+
+const StyledCard = styled.div<{image: string}>`
 transition: all 0.5s ease-out;
   background:${props => `url(${props.image})`};
   background-repeat: no-repeat;
   background-size: cover;
-  height: 200px;
+  height: 300px;
   div {
     box-sizing: border-box;
     transition: opacity 0.5s;
@@ -29,18 +29,15 @@ transition: all 0.5s ease-out;
     }
   }
 `
-
-//** Check this  link to use images from cloudinary : https://www.npmjs.com/package/gatsby-source-cloudinary */
 const Card = ({ project }) => {
   return (
-    <AniLink paintDrip to={`/project/${project.node.Slug}`} hex="#ffcc33">
-      <StyledCard image={project.node.Thumbmail.url}>
+    <Link to={`/${project.node.Slug}`}>
+      <StyledCard image={project.node.Thumbmail.url} id={project.node.Title}>
         <div> 
             {project.node.Title}
-       
         </div>
       </StyledCard>
-    </AniLink>
+    </Link>
   );
 };
 

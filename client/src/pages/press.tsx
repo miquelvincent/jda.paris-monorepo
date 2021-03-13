@@ -9,7 +9,7 @@ const PressPage = () => {
   return (
     <Layout>
       <div>
-            <h1>PRESS</h1>
+        <h1>PRESS</h1>
       </div>
     </Layout>
   );

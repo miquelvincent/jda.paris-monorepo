@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styled from "styled-components"
+import {Logo} from "../assets/logo"
 import React from "react"
 
 const StyledHeader = styled.header`
@@ -10,12 +11,12 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   background: antiquewhite;
-  img {
-    height: 90px;
+  svg {
+    height: 110px;
   }
   a {
     color: black;
-    animation: al 1;
+    animation: all 1s;
     &:hover {
       text-decoration: underline;
     }
@@ -23,8 +24,8 @@ const StyledHeader = styled.header`
 `
 const Header = () => (
   <StyledHeader>
-   <AniLink fade to={`/`}>Réalisations</AniLink>
-    <div><img src={`${process.env.GATSBY_ROOT_URL}/logo.png`}/></div>
+    <AniLink fade to={`/`}>Réalisations</AniLink>
+    <div><Logo/></div>
     <Link to="/agency">Agence</Link>
   </StyledHeader>
 )

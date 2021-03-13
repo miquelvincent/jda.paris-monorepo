@@ -1,15 +1,12 @@
-import React, { useEffect, useState, useLayoutEffect} from "react";
+import React, { useEffect, useState} from "react";
 import styled from "styled-components"
 import { graphql } from "gatsby";
+import {handleOpacity} from "../helpers"
 import { useScroll } from "../hooks/useScroll"
 import { useDimensions } from "react-hook-dimensions"
 import Nav from "../components/nav"
-import Header from "../components/header";
 import Footer from "../components/footer"
 import Markdown from "react-markdown";
-import Layout from "../components/layout"
-
-const yellow = "rgb(251, 196, 65)"
 
 
 const StyledCover = styled.div<{ imageCover: string }>`
@@ -79,19 +76,15 @@ const Project = ({ data }) => {
     article: true,
   };
 
-  const handleOpacity = (scrollP) => {
-    const deltaPositionNav = scrollP - (cover?.current?.offsetTop + cover?.current?.offsetHeight)
-    let opacity = 0
-    opacity = (deltaPositionNav + 100) / 100
-    return opacity > 1 ? 1 : opacity < 0 ? 0 : opacity
-  }
-
   useEffect(() => {
     updateOpacity(1)
   }, [])
 
   useEffect(() => {
-    const opacity = handleOpacity(scrollPositon.scrollY)
+    const positionFooter = footer?.current?.offsetTop - (scrollPositon.scrollYBottom + 300)
+    const deltaPositionNav = scrollPositon.scrollY - (cover?.current?.offsetTop + cover?.current?.offsetHeight)
+    const position = scrollPositon.scrollY < 1500 ? deltaPositionNav : positionFooter
+    const opacity = handleOpacity(position)
     updateDisplay(opacity)
   }, [scrollPositon])
 

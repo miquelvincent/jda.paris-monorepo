@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
     margin: 50px 20px;
     border-top: 2px solid black;
     @media (max-width: 1024px) {
-      margin: 30px 20px 20px;
+      margin: 20px 20px 20px;
     }
     >div {
       display: flex;
@@ -27,13 +27,11 @@ const StyledFooter = styled.footer`
       font-size: 14px;
     }
     .projects{
-      .link{
+      > .link{
         &:last-child{
           .separator {
             display:none;
-          }
-      
-          
+          } 
         }
       }
     }
@@ -50,7 +48,6 @@ const StyledFooter = styled.footer`
       height: 50px;
       justify-content: center;
       padding: 0px 0px 0px;
-      margin: 20px 20px;
       .projects {
         display: none; 
       }
@@ -60,19 +57,47 @@ const StyledFooter = styled.footer`
     }
   }
 `
+
+const StyledProjectList = styled.div`
+      .link {
+        &:last-child {
+          .separator {
+            display: none;
+          } 
+        }
+      }
+    }
+    a {
+      color: black;
+      transition: 0.5s ease;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+        transition: 0.5s ease;
+      }
+    }
+`
+
+export const ProjectsList = ({data}) => (
+  <StyledProjectList>
+    {data.allStrapiProjects.edges.map(item => <span className="link"><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link><span className="separator"> | </span></span>)}
+  </StyledProjectList>
+)
 const Footer = () => {
   const data = useStaticQuery(query);
   return (
-    <StyledFooter>
-      <div>
-        <div className="projects">
-          <div className="title">Réalisations</div>
-          {data.allStrapiProjects.edges.map(item => <span className="link"><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link><span className="separator"> | </span></span>)}
+    <>
+      <StyledFooter>
+        <div>
+          <div className="projects">
+            <div className="title">Réalisations</div>
+            <ProjectsList data={data}/>
+          </div>
+          <div className="logo"><AniLink fade to={`/`}><Logo /></AniLink></div>
+          <div className="contact"><a href="mailto:contact@jda.paris">contact@jda.paris</a> | <a href="tel:0033665500559">+33 6 65 50 05 59</a> | <a href="https://www.instagram.com/jdarchitecte/" target="_blank" rel="noreferrer">Instagram</a></div>
         </div>
-        <div className="logo"><AniLink fade to={`/`}><Logo /></AniLink></div>
-        <div className="contact"><a href="mailto:contact@jda.paris">contact@jda.paris</a> | <a href="tel:0033665500559">+33 6 65 50 05 59</a> | <a href="https://www.instagram.com/jdarchitecte/" target="_blank" rel="noreferrer">Instagram</a></div>
-      </div>
-    </StyledFooter>
+      </StyledFooter>
+    </>
   )
 }
 

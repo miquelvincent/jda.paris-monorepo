@@ -1,58 +1,45 @@
 import React, { useEffect, useState} from "react";
-import styled from "styled-components"
 import { graphql } from "gatsby";
 import { handleOpacity } from "../helpers"
 import { useScroll } from "../hooks/useScroll"
+import styled from "styled-components"
 import { useDimensions } from "react-hook-dimensions"
-import Nav from "../components/nav"
+import {ProjectsList} from "../components/footer"
 import Footer from "../components/footer"
-import Markdown from "react-markdown";
+import Menu from "../components/menu";
+import Cover from "../components/cover";
 
-
-const StyledCover = styled.div<{ imageCover: string }>`
-  margin-bottom: 60px;
-  background:${({ imageCover }) => `url(${imageCover})`};
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 70vh;
-  width: 100%;
-  @media (max-width: 1024px) {
-    height: 50vh;
-  }
-  >div {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    color: black;
-    font-family: "Roboto";
-    font-weight: 500;
-    font-size: 20px;
-    justify-content:center;
-    >div {
-      background: linear-gradient(to bottom, transparent, antiquewhite);
-      padding: 30px;
-      width: 100%;
+const StyledProject = styled.div`
+  .projectsList {
+    display: none;
+    @media (max-width: 1024px) {
+      display: block;
+      margin: 0 20px;
+      border-top: 1px solid black;
+      padding-top: 15px;
+      >span {
+        line-height: 1.5;
+      }
     }
   }
 `
+
+
 
 const StyledGallery = styled.div`
   @media (max-width: 1024px) {
     margin: 0 20px;
   }
->div {
-  width: 100%;
-  max-width: 980px;
-  margin: auto;
-
-  img {
-    margin-bottom: 20px;
+  >div {
     width: 100%;
-  }
-}
+    max-width: 980px;
+    margin: auto;
 
+    img {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+}
 `
 
 export const query = graphql`
@@ -68,6 +55,15 @@ export const query = graphql`
       Thumbmail {
         id
         url
+      }
+    }
+    allStrapiProjects {
+      edges {
+        node {
+          id
+          Title
+          Slug
+        }
       }
     }
   }
@@ -99,16 +95,9 @@ const Project = ({ data }) => {
   }, [scrollPositon])
 
   return (
-    <div style={{opacity, transition: "opacity 1s ease-in"}}>
-      <Nav opacity={displayNav} footerPosition={footer?.current?.offsetTop} />
-        <StyledCover imageCover={project.Thumbmail.url} ref={cover}>
-          <div>
-            <div>
-              <h1>{project.Title}</h1>
-              <Markdown source={project.Description} escapeHtml={false} />
-            </div>
-          </div>
-        </StyledCover>
+    <StyledProject style={{opacity, transition: "opacity 1s ease-in"}}>
+      <Menu opacity={displayNav} footerPosition={footer?.current?.offsetTop} />
+        <div  ref={cover}><Cover img={project.Thumbmail.url} title={project.Title} text={project.Description}/></div>
         <StyledGallery>
           <div>
           {project.Images.map(image =>
@@ -116,8 +105,9 @@ const Project = ({ data }) => {
           )}
           </div>
         </StyledGallery>
+        <div className="projectsList"><ProjectsList data={data}/></div>
         <div ref={footer}><Footer /></div>
-    </div>
+    </StyledProject>
   );
 };
 

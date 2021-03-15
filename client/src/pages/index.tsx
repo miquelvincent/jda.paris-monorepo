@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Nav from "../components/nav"
+import Menu from "../components/menu"
 import {handleOpacity} from "../helpers"
 import { useDimensions } from "react-hook-dimensions"
 import { useScroll } from "../hooks/useScroll"
@@ -27,12 +27,14 @@ const IndexPage = () => {
 
 
   return (
+    <>
+    {scrollPositon.scrollY - (cover?.current?.offsetTop + cover?.current?.offsetHeight) > 0 && <Menu opacity={displayNav} />}
     <Layout>
         <div ref={cover} className="cover"><Slideshow images={data.strapiHomepage.slideshow} /></div>
-        <Nav opacity={displayNav} />
         <ProjectsComponent projects={data.allStrapiProjects.edges} />
         <div ref={footer} footerPosition={footer?.current?.offsetTop}><Footer/></div>
     </Layout>
+    </>
   );
 };
 

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Logo } from "../assets/logo"
-import { useWindowSize } from "../hooks/useWindowSize"
+import React from "react";
 import styled from "styled-components"
-import { Arrow } from "../assets/arrow"
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
+import { Logo } from "../assets/logo"
 
 
-const StyledNav = styled.div`
+const StyledNav = styled.div<{type: "mobile" | "desktop"}>`
   nav {
     position: fixed;
     max-width: 250px;
@@ -43,18 +41,20 @@ const StyledNav = styled.div`
           font-weight: 500;
         }
         line-height: 20px;
+        font-size: ${props => props.type === "desktop" ? "20px" : "25px"};
         a {
-          font-size: 14px;
+          font-size: ${props => props.type === "desktop" ? "14px" : "20px"};
+          line-height: ${props => props.type === "desktop" ? "1" : "1.5"};
           &:hover {
             border-bottom: 0px;
           }
         }
-    
         color: black;
       }
     }
     a, span {
-      font-size: 16px;
+      font-size: ${props => props.type === "desktop" ? "16px" : "22px"};
+      line-height: ${props => props.type === "desktop" ? "1" : "2"};
       color: black;
       border-bottom: 0px solid black;
       &:hover {
@@ -64,64 +64,36 @@ const StyledNav = styled.div`
   }
   }
   }
-  .backToTop {
-    cursor: pointer;
-    position: fixed;
-    bottom: 100px; 
-    right: 60px;
-  }
 `
 
-const Nav = ({ opacity, footerPosition }: { opacity: number, footerPosition: number }) => {
-  const data = useStaticQuery(query);
-  const windowSize = useWindowSize()
-  const [openProjectsMenu, updateMenu] = useState(false)
+const Nav = ({ opacity, updateMenu, openProjectsMenu, data, type }) =>
+  <StyledNav type={type}>
+    <nav style={{ opacity: opacity, display: opacity > 0 ? 'block' : 'none' }}>
+      <ul>
+        <li className="logo">
+          <Link to="/"><Logo /></Link>
+        </li>
+        <li>
+          <span onClick={() => updateMenu(!openProjectsMenu)}>Réalisations</span>
+          <ul className={openProjectsMenu ? 'open' : 'close'}>
+            {data.allStrapiProjects.edges.map(item => <li key={item.node.Slug}><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link></li>)}
+          </ul>
+        </li>
+        <li>
+          <Link to="/agency">Agence</Link>
+        </li>
+        <li>
+          <Link to="/press">Press</Link>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/jdarchitecte/" target="_blank" rel="noreferrer">Instagram</a>
+        </li>
+        <li>
+        <a href="mailto:contact@jda.paris">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </StyledNav>
 
-  return (
-    footerPosition > 3000 ?
-    <StyledNav>
-      <nav style={{ opacity: opacity, display: opacity > 0 ? 'block' : 'none' }}>
-        <ul>
-          <li className="logo">
-            <Link to="/"><Logo /></Link>
-          </li>
-          <li>
-            <span onClick={() => updateMenu(!openProjectsMenu)}>Réalisations</span>
-            <ul className={openProjectsMenu ? 'open' : 'close'}>
-              {data.allStrapiProjects.edges.map(item => <li><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link></li>)}
-            </ul>
-          </li>
-          <li>
-            <Link to="/agency">Agences</Link>
-          </li>
-          <li>
-            <Link to="/press">Press</Link>
-          </li>
-          <li>
-            <a href="">Instagram</a>
-          </li>
-          <li>
-            <a href="">Contact</a>
-          </li>
-        </ul>
-      </nav>
-      <div style={{ opacity, display: opacity > 0 ? 'block' : 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="backToTop"><Arrow /></div>
-    </StyledNav> : <span/>
-  );
-};
 
-const query = graphql`
-  query {
-    allStrapiProjects {
-      edges {
-        node {
-          id
-          Title
-          Slug
-        }
-      }
-    }
-  }
-`;
-
-export default Nav;
+export default Nav

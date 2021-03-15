@@ -16,12 +16,14 @@ const StyledHeader = styled.header`
     background: transparent;
     padding: 0 0 0 0; 
     width: 100%;
-    z-index: 100;
+    z-index: 3;
     justify-content: center;
     margin: 20px auto;
     a {
       display: none;
-
+    }
+    svg {
+      display: none;
     }
   }
   svg {

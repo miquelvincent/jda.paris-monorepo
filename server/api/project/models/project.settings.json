@@ -42,6 +42,13 @@
     "Slug": {
       "type": "uid",
       "targetField": "Title"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "published"
+      ]
     }
   }
 }

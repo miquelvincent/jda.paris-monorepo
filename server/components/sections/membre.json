@@ -2,7 +2,8 @@
   "collectionName": "components_sections_membres",
   "info": {
     "name": "Membre",
-    "icon": "helicopter"
+    "icon": "helicopter",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,6 +20,9 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "email": {
+      "type": "string"
     }
   }
 }

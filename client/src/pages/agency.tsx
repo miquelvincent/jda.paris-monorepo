@@ -18,7 +18,7 @@ const StyledAgencyPage = styled.div`
       font-size: 20px;
     }
     grid-template-columns: 1fr 1fr;
-    @media (max-width: 1024px) {
+    @media (max-width: 780px) {
       grid-template-columns: 1fr;
       margin: 30px 20px 40px;
       grid-gap: 45px;

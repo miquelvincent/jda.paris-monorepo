@@ -15,7 +15,7 @@ const StyledLayout = styled.div`
     grid-gap: 25px;
     margin: 30px auto;
     grid-template-columns: 1fr 1fr;
-    @media (max-width: 1024px) {
+    @media (max-width: 780px) {
       grid-template-columns: 1fr;
       margin: 30px 20px 0;
     }

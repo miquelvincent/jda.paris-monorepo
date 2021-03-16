@@ -10,12 +10,19 @@ const StyledAgencyPage = styled.div`
     display: grid;
     grid-gap: 25px;
     margin: 30px auto;
-    img {
-      height: 100%;
-    }
     p {
-      line-height: 2;
+      line-height: 1.5;
       font-size: 20px;
+    }
+    .member {
+      margin-bottom: 10px;
+    }
+    a {
+      color: black;
+      text-decoration: none; 
+      &:hover {
+        text-decoration: underline;
+      }
     }
     grid-template-columns: 1fr 1fr;
     @media (max-width: 780px) {
@@ -33,7 +40,7 @@ const AgencyPage = () => {
     <StyledAgencyPage>
     <InnerPage title="Agence">
         <div className="gridMembre">
-        {about.Membre.map(item => <div className="membre" key={item.Image.id}><img src={item.Image.url} /><p>{item.Name}</p></div>)}
+        {about.Membre.map(item => <div className="membre" key={item.Image.id}><img src={item.Image.url} /><div><p>{item.Name}</p><a href={`mailto:${item.email}`}>{item.email}</a></div></div>)}
         </div>
     </InnerPage>
   </StyledAgencyPage>
@@ -47,6 +54,7 @@ const query = graphql`
      Description
      Membre {
         Name
+        email
         Image {
           id
           url

@@ -8,6 +8,9 @@ const StyledNav = styled.div<{type: "mobile" | "desktop"}>`
   nav {
     position: fixed;
     max-width: 250px;
+    @media (max-width: 1024px) {
+      max-width: 100%;
+    }
     top: 20px;
     left: 20px;
     > ul {
@@ -71,7 +74,7 @@ const Nav = ({ opacity, updateMenu, openProjectsMenu, data, type }) =>
     <nav style={{ opacity: opacity, display: opacity > 0 ? 'block' : 'none' }}>
       <ul>
         <li className="logo">
-          <Link to="/"><Logo /></Link>
+          <Link to={type === "mobile" ? `/#projects` : `/`}><Logo /></Link>
         </li>
         <li>
           <span onClick={() => updateMenu(!openProjectsMenu)}>Réalisations</span>

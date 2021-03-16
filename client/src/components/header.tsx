@@ -39,8 +39,8 @@ const StyledHeader = styled.header`
 `
 const Header = () => (
   <StyledHeader>
-    <Link to={`/`}>Réalisations</Link>
-    <div><Logo/></div>
+    <Link to={`/#projects`}>Réalisations</Link>
+   <Link to={`/`}><Logo/></Link>
     <Link to="/agency">Agence</Link>
   </StyledHeader>
 )

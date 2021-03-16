@@ -60,14 +60,6 @@ table {
     top: 0;
   }
   
-  .slideshow {
-    height: calc(100vh - 100px);
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
 
 
  @keyframes fadeIn {

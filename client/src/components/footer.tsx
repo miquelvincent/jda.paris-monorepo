@@ -80,7 +80,7 @@ const StyledProjectList = styled.div`
 
 export const ProjectsList = ({data}) => (
   <StyledProjectList>
-    {data.allStrapiProjects.edges.map(item => <span className="link"><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link><span className="separator"> | </span></span>)}
+    {data.allStrapiProjects.edges.map((item, i) => <span className="link" key={i}><Link to={`/${item.node.Slug}`}>{item.node.Title}</Link><span className="separator"> | </span></span>)}
   </StyledProjectList>
 )
 const Footer = () => {

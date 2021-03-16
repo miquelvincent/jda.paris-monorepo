@@ -9,16 +9,6 @@ import Nav from "./nav"
 
 const StyledLayout = styled.div`
   transition: opacity 1s ease-in;
-  .grid {
-    display: grid;
-    max-width: 980px;
-    grid-gap: 25px;
-    margin: 30px auto;
-    grid-template-columns: 1fr 1fr;
-    @media (max-width: 780px) {
-      grid-template-columns: 1fr;
-      margin: 30px 20px 0;
-    }
 }
 `
 
@@ -33,7 +23,6 @@ const Layout = ({ children }) => {
   return (
     <StyledLayout style={{opacity}}>
       <Seo seo={data.strapiHomepage.seo} />
-      <Header />
       <main>{children}</main>
     </StyledLayout>
   )

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, } from "react";
+import { createGlobalStyle } from 'styled-components';
 import { useWindowSize } from "../hooks/useWindowSize"
 import styled from "styled-components"
 import { Arrow } from "../assets/arrow"
@@ -14,13 +15,24 @@ const StyledMenu = styled.div`
     right: 60px;
   }
 `
+const GlobalStyle = createGlobalStyle<{ menu: boolean }>`
+  body {
+    overflow: ${props => props.menu ? "hidden" : "auto"};;
+  }
+`;
+ 
 
 const StyledMobilMenu = styled.div<{ open: boolean }>`
+    overflow: scroll;
     @media (min-width: 1024px) {
         display: none;
     }
     nav{
         margin-top: 30px;
+        overflow: scroll;
+        display: block;
+        height: 85vh;
+        width: calc(80vw - 20px)
     }
     .menu {
         z-index: 100;
@@ -95,6 +107,7 @@ const Menu = ({ opacity, footerPosition }: { opacity: number, footerPosition?: n
                 <div style={{ opacity, display: opacity > 0 ? 'block' : 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="backToTop"><Arrow /></div>
             </StyledMenu> :
             <StyledMobilMenu open={menu}>
+                <GlobalStyle menu={menu}/>
                 <div className={`menu ${menu ? "open" : "close"}`} onClick={() => openMenu(!menu)}>
                     <span></span>
                     <span></span>
